@@ -1,0 +1,6 @@
+{
+  "name": "queue",
+  "dependencies": {
+    "bullmq": "^5.7.10"
+  }
+}
