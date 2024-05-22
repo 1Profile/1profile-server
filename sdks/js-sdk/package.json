@@ -1,0 +1,9 @@
+{
+  "name": "@1profile/js-sdk",
+  "devDependencies": {
+    "client-api": "workspace:*"
+  },
+  "dependencies": {
+    "@trpc/client": "10.45.2"
+  }
+}

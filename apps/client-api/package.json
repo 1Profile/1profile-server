@@ -1,5 +1,7 @@
 {
   "name": "client-api",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
     "start": "pnpm run build && node dist/index.js",
     "build": "rm -rf ./dist && tsc",
@@ -7,8 +9,11 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.11.1",
+    "@hono/trpc-server": "^0.3.1",
+    "@trpc/server": "10.45.2",
     "bullmq": "^5.7.10",
-    "hono": "^4.3.9"
+    "hono": "^4.3.9",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",

@@ -1,14 +1,16 @@
 import { serve } from '@hono/node-server'
+import { trpcServer } from '@hono/trpc-server'
 import { Hono } from 'hono'
+import { appRouter } from './trpc'
 
 const app = new Hono()
 
-app.post('/events')
-
-// identify the user
-app.post('/identify')
-
-app.post('/users')
+app.use(
+  '/trpc/*',
+  trpcServer({
+    router: appRouter,
+  })
+)
 
 serve(
   {
@@ -19,3 +21,5 @@ serve(
     console.log(`[💡] Server running on ${add.port}`)
   }
 )
+
+export * from './trpc'

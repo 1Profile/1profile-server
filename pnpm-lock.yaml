@@ -13,12 +13,21 @@ importers:
       '@hono/node-server':
         specifier: ^1.11.1
         version: 1.11.1
+      '@hono/trpc-server':
+        specifier: ^0.3.1
+        version: 0.3.1(@trpc/server@10.45.2)(hono@4.3.9)
+      '@trpc/server':
+        specifier: 10.45.2
+        version: 10.45.2
       bullmq:
         specifier: ^5.7.10
         version: 5.7.10
       hono:
         specifier: ^4.3.9
         version: 4.3.9
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@types/node':
         specifier: ^20.12.12
@@ -36,6 +45,22 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
+  packages/queue:
+    dependencies:
+      bullmq:
+        specifier: ^5.7.10
+        version: 5.7.10
+
+  sdks/js-sdk:
+    dependencies:
+      '@trpc/client':
+        specifier: 10.45.2
+        version: 10.45.2(@trpc/server@10.45.2)
+    devDependencies:
+      client-api:
+        specifier: workspace:*
+        version: link:../../apps/client-api
+
 packages:
 
   /@cspotcode/source-map-support@0.8.1:
@@ -48,6 +73,17 @@ packages:
   /@hono/node-server@1.11.1:
     resolution: {integrity: sha512-GW1Iomhmm1o4Z+X57xGby8A35Cu9UZLL7pSMdqDBkD99U5cywff8F+8hLk5aBTzNubnsFAvWQ/fZjNwPsEn9lA==}
     engines: {node: '>=18.14.1'}
+    dev: false
+
+  /@hono/trpc-server@0.3.1(@trpc/server@10.45.2)(hono@4.3.9):
+    resolution: {integrity: sha512-2FgDUv6ngrDA8pu/hb8hTqUyEgsT7PbYriTVKJoYxlqW8nnCqubruZ/14IQ/MCkBPXKVefnqUCJNAytW1Su++A==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@trpc/server': ^10.10.0
+      hono: '>=4.*'
+    dependencies:
+      '@trpc/server': 10.45.2
+      hono: 4.3.9
     dev: false
 
   /@ioredis/commands@1.2.0:
@@ -136,6 +172,18 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@trpc/client@10.45.2(@trpc/server@10.45.2):
+    resolution: {integrity: sha512-ykALM5kYWTLn1zYuUOZ2cPWlVfrXhc18HzBDyRhoPYN0jey4iQHEFSEowfnhg1RvYnrAVjNBgHNeSAXjrDbGwg==}
+    peerDependencies:
+      '@trpc/server': 10.45.2
+    dependencies:
+      '@trpc/server': 10.45.2
+    dev: false
+
+  /@trpc/server@10.45.2:
+    resolution: {integrity: sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg==}
+    dev: false
 
   /@tsconfig/node10@1.0.11:
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -768,3 +816,7 @@ packages:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
     dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
